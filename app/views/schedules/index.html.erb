@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<div class="toppage">
+  <h1 class="top">カレンダー</h1>
+  <br>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="schedule">今後の予定一覧</div>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>タイトル</th>
+            <th>日程</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @schedules.each do |schedule| %>
+            <tr>
+              <td><%= link_to schedule.title , schedule %></td>
+              <td><%= schedule.start_date.strftime("%m-%d") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <!-- ここでフォームを追加 -->
+      <%= form_with(model: @schedule, local: true) do |form| %>
+        <div class="title">
+          <div class="form-tag">タイトル</div>
+          <%= form.text_field :title %>
+        </div>
+        <div class="time">
+          <div class="form-tag">時間</div>
+          <%= form.datetime_select :start_date %>
+        </div>
+        <div class="submit">
+          <%= form.submit %>
+        </div>
+      <% end %>
+    </div>
+
+    <br>
+    <div class="col-md-8">
+      <%= month_calendar events: @schedules do |date, schedules| %>
+        <div class="date">
+          <%= link_to  date.day, new_schedule_path(date: date) %>
+        </div>
+        <% schedules.each do |schedule| %>
+          <div>
+            <%= link_to schedule.title, schedule %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
