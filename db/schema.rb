@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2023_12_21_115857) do
 
-  create_table "costomers", force: :cascade do |t|
+  create_table "customers", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -21,16 +21,16 @@ ActiveRecord::Schema.define(version: 2023_12_21_115857) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_costomers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_costomers_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
   create_table "schedules", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "title", null: false
-    t.datetime "start_date", null: false
-    t.datetime "end_date", null: false
-    t.integer "status", null: false
+    t.string "body", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

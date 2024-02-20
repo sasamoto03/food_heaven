@@ -1,2 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
-@import "simple_calendar";
+// @import "simple_calendar";
+@import "~simple-calendar/simple_calendar";
+
+.red-text {
+  color: #900;
+}
+
+.green-text {
+  color: #008000;
+}

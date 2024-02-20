@@ -1,4 +1,4 @@
-class Costomer < ApplicationRecord
+class Customer < ApplicationRecord
   has_many :schedules, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -1,14 +1,46 @@
-<p id="notice"><%= notice %></p>
-<div class="show">
-<p>
-  <strong>タイトル</strong>
-  <%= @schedule.title %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 mt-5">
+      <p id="notice"><%= notice %></p>
+      <h3 class="mb-5">
+        <%= link_to schedules_path do %>
+        <i class="fa-solid fa-less-than"></i>
+        <% end %>
+        <%= l(@schedule.start_time, format: :date) %>
+      </h3>
+      <div class="row border-bottom mb-3 show">
+        <div class="col-md-3">
+          <p class="font-weight-bold">タイトル</p>
+        </div>
+        <div class="col-md-9">
+          <p class="pb-0"><%= @schedule.title %></p>
+        </div>
+      </div>
 
-<p>
-  <strong>日時</strong>
-  <%= @schedule.start_date %>
-</p>
+      <div class="row border-bottom mb-3 show">
+        <div class="col-md-3">
+          <strong>内容</strong>
+        </div>
+        <div class="col-md-9">
+          <%= simple_format(@schedule.body) %>
+        </div>
+      </div>
 
-
+      <div class="row border-bottom mb-3 show">
+        <div class="col-md-3">
+          <strong>日時</strong>
+        </div>
+        <div class="col-md-9">
+          <p><%= @schedule.start_time.strftime("%H:%M") %> -
+             <%= @schedule.end_time.strftime("%H:%M") %></p>
+        </div>
+      </div>
+      <div class="row border-bottom mb-3 show">
+       <div class="col-md-12 text-center">
+      <%= link_to "編集", edit_schedule_path(@schedule), class:"green-text" %> |
+      <%= link_to "削除", schedule_path(@schedule), method: :delete, class:"red-text" %>
+      </div>
+       </div>
+    </div>
+  </div>
 </div>

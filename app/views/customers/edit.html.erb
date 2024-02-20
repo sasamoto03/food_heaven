@@ -1,2 +1,16 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<div class="container">
+ <div class="row">
+  <div class="col-md-8 offset-md-2 mt-5">
+    <h2>会員情報編集</h2><br>
+
+    <%= form_with model: @customer do |f| %>
+    <h5>氏名</h5>
+      <%= f.text_field :name, class: "form-group" %>
+    <h5>メールアドレス</h5>
+      <%= f.text_field :email, class: "form-group" %>
+      <%= f.submit "保存" %>
+      <% end %>
+      <%= link_to "退会する", customer_path(@customer), method: :delete %>
+</div>
+ </div>
+  </div>

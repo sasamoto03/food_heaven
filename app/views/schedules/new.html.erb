@@ -1,1 +1,22 @@
+<br>
 <%= @date %>
+
+ <!-- ここでフォームを追加 -->
+<%= form_with(model: @schedule, local: true) do |form| %>
+    <div class="title"><br>
+      <div class="form-tag">タイトル</div>
+      <%= form.text_field :title %>
+    </div>
+    <div class="body"><br>
+      <div class="form-tag">内容</div>
+      <%= form.text_area :body %>
+    </div>
+    <div class="time"><br>
+      <div class="form-tag">時間</div>
+      <%= form.time_select :start_time %>-
+      <%= form.time_select :end_time %>
+    </div><br>
+    <div class="submit">
+      <%= form.submit %>
+    </div>
+<% end %>
